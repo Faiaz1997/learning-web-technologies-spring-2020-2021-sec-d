@@ -1,21 +1,61 @@
-<products>
-    <product id="11">
-         <name>Samsung</name>
-         <unitprice>35000</unitprice>
-         <stock>50</stock>
-         <status>1</status>
-    </product>
-    <product id="20">
-         <name>HTC</name>
-         <unitprice>65300</unitprice>
-         <stock>35</stock>
-         <status>0</status>
-    </product>
-    <product id="23">
-         <name>Nokia</name>
-         <unitprice>25100</unitprice>
-         <stock>100</stock>
-         <status>1</status>
-    </product>
-</products>
+<lab>
+    <products>
+        <product id="11">
+            <name>Samsung</name>
+            <unitprice>35000</unitprice>
+            <stock>50</stock>
+            <status>1</status>
+        </product>
+        <product id="20">
+            <name>HTC</name>
+            <unitprice>65300</unitprice>
+            <stock>35</stock>
+            <status>0</status>
+        </product>
+        <product id="23">
+            <name>Nokia</name>
+            <unitprice>25100</unitprice>
+            <stock>100</stock>
+            <status>1</status>
+        </product>
+    </products>
 
+    <admission>
+        <student sl="23">
+            <name>
+                <firstname>John</firstname>
+                <lastname>Carter</lastname>
+            </name>
+            <admissiondate>
+                <date>25</date>
+                <month>12</month>
+                <year>2015</year>
+            </admissiondate>
+        
+        </student>
+        <student sl="29">
+            <name>
+                <firstname>Bob</firstname>
+                <lastname>Marshal</lastname>
+            </name>
+            <admissiondate>
+                <date>13</date>
+                <month>01</month>
+                <year>1999</year>
+            </admissiondate>
+            
+        </student>
+        <student sl="35">
+            <name>
+                <firstname>Clark</firstname>
+                <lastname>Kent</lastname>
+            </name>
+            <admissiondate>
+                <date>17</date>
+                <month>06</month>
+                <year>2005</year>
+            </admissiondate>
+            
+        </student>
+    </admission>
+</lab>
