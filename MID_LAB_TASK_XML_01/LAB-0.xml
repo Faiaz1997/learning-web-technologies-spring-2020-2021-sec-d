@@ -58,4 +58,33 @@
             
         </student>
     </admission>
+    <personinfo>
+        <preson id="1">
+            <name>
+                <firstname>John</firstname>
+                <lastname>Doe</lastname>
+            </name>
+            <address>H# 38, R#3, Banani, Dhaka</address>
+            <depertment>Sales</depertment>
+            <salary>$20000</salary>
+        </preson>
+        <preson id="2">
+            <name>
+                <firstname>Mark</firstname>
+                <lastname>Zuckerberg</lastname>
+            </name>
+            <address>Flat# A/1, H# 20, R#18, Mirpur, Dhaka</address>
+            <depertment>Accounts</depertment>
+            <salary>$12000</salary>
+        </preson>
+        <preson id="3">
+            <name>
+                <firstname>Ala</firstname>
+                <lastname>Voski</lastname>
+            </name>
+            <address>H# 38, R#3, Motijheel</address>
+            <depertment>Human Resource</depertment>
+            <salary>$30000</salary>
+        </preson>
+    </personinfo>
 </lab>
