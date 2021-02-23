@@ -14,6 +14,13 @@
         {
             echo "Null Submission<br>";
         }
+        for($i=0;$i<strlen($name);$i++)
+        {
+            if(!((ord($name[$i]) >= 65 && ord($name[$i]) <= 122)) )
+            {
+                echo 'Invalid Name Format<br>';break;
+            }
+        }
 
         for($i=0;$i<strlen($username);$i++)
         {
