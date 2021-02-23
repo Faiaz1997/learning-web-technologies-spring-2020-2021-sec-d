@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+
+	<form method="" action="reg.php">
+		<fieldset>
+            <legend>Registration</legend>
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name" value="" placeholder=""></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" name="email" value=""></td>
+				</tr>
+                <tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" value="" placeholder=""></td>
+				</tr>
+                <tr>
+					<td>Password:</td>
+					<td><input type="password" name="password" value="" placeholder=""></td>
+				</tr>
+                <tr>
+					<td>Confirm Password:</td>
+					<td><input type="password" name="confirmpassword" value="" placeholder=""></td>
+				</tr>
+                <tr>
+					<td>
+                        <fieldset>
+                            <legend> Gender</legend>
+                        <input type="radio" name="gender" value="male"> Male
+						<input type="radio" name="gender" value="female"> Female
+						<input type="radio" name="gender" value="other"> Other 
+					</fieldset>
+                    </td>
+                    
+				</tr>
+				<tr> 
+					<td>
+                        <fieldset>
+                            <legend>Date of Birth</legend>
+                        <input type="date" name="dob" value="">
+                        </fieldset>
+                    </td>
+                        
+				</tr>
+					<td>
+						<input type="submit" name="button" value="Submit">
+						<input type="reset" name="button" value="Reset">
+					</td>
+				</tr>
+			</table>
+			
+		</fieldset>
+
+	</form>
+</body>
+</html>
