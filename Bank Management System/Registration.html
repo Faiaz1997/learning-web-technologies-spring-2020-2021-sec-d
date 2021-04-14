@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+
+	<table align="center">
+		<tr>
+			<td>
+				<form method="POST" action="Registration.php">
+					<fieldset>
+						<legend align="center">Registration</legend>
+						<table>
+							<tr>
+								<td>Name:</td>
+								<td><input type="text" name="name" value="" placeholder=""></td>
+							</tr>
+							<tr>
+								<td>Email:</td>
+								<td><input type="text" name="email" value="" placeholder=""></td>
+							</tr>
+							<tr>
+								<td>Address:</td>
+								<td><input type="text" name="address" value="" placeholder=""></td>
+							</tr>
+							<tr>
+								<td>Phone:</td>
+								<td><input type="text" name="phone" value="" placeholder=""></td>
+							</tr>
+							
+							<tr>
+								<td>Gender:</td>
+								<td>
+									<select name="gender" >
+										<option value=""></option>
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+										<option value="Other">Other</option>
+								</td>
+								
+							</tr>
+							<tr> 
+								<td>Date of Birth:</td>
+								<td>
+									<input type="date" name="dob" value="">
+								</td>
+									
+							</tr>
+							<tr>
+								<td>Password:</td>
+								<td><input type="password" name="password" value="" placeholder=""></td>
+							</tr>
+							<tr>
+								<td>Confirm Password:</td>
+								<td><input type="password" name="confirmpassword" value="" placeholder=""></td>
+							</tr>
+							<tr>
+								<td colspan='2' align="center">
+									<input type="submit" name="submit" value="Submit">
+									<input type="reset" name="reset" value="Reset">
+								</td>
+							</tr>
+						</table>
+						
+					</fieldset>
+			
+				</form>
+
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
