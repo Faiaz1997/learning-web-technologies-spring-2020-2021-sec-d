@@ -8,10 +8,10 @@
     <body>
         <table align="center" width="100%" height="80px" border="1">
             <tr>
-                <td align="center" width="25%"><a href="clienthome.html">Home</a> </td>
+                <td align="center" width="25%"><a href="clienthome.php">Home</a> </td>
                 <td align="center" width="25%"><a href="applyloan.html">Loan</a> </td>
                 <td align="center" width="25%">Business Analytics</td>
-                <td align="center" width="25%"><a href="contactadmin.html">Contact Us</a></td>       
+                <td align="center" width="25%"><a href="contactadmin.html">Contact Us</a></td>        
             </tr>
         </table>
         <table border="1" width="100%">
@@ -19,18 +19,19 @@
                 <td width="20%">
                     <table height="600px">
                         <tr><td><b>Accounts</b></td></tr>
-                        <tr><td><a href="clientaccountsummary.html">Accounts Summary</a> </td></tr>
-                        <tr><td><a href="transactionhistory.html">Transaction History</a> </td></tr>
+                        <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
+                        <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
                         <tr><td><b>Fund Transfer</b></td></tr>
                         <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
                         <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
                         <tr><td><b>Requests</b></td></tr>
-                        <tr><td><a href="clientcard.html">Issue Atm Card/Cheque Book</a></td></tr>
+                        <tr><td><a href="clientcard.html">Issue Atm Card</a></td></tr>
                         <tr><td><b>Profile</b></td></tr>
-                        <tr><td><a href="clientdetails.html">Personal Details</a> </td></tr>
+                        <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
                         <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
-                        <tr><td><a href="logout.php">Log Out</a></td></tr>    
-                    </table>
+                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
+                        </tr>
+                    </table>  
                 </td>
                 <td width="80%">
                     <table align="center" width="30%">
@@ -43,14 +44,14 @@
                                             <tr>
                                                 <td align="center">
                                                 Name: <br><br>
-                                                <input type="text" name="name"><br><br>
+                                                <input type="text" name="name" id="name" ><br><br>
                                                 Account No: <br><br>
-                                                <input type="text" name="clientaccountno"><br><br>
+                                                <input type="text" name="clientaccountno" id="clientaccountno"><br><br>
                                                 Ammount: <br><br>
-                                                <input type="text" name="withdrawammount"><br><br>
+                                                <input type="text" name="withdrawammount" id="withdrawammount"><br><br>
                                                 Password: <br><br>
-                                                <input type="password" name="password"> <br><br>
-                                                <input type="submit" name="submit" value="Submit">
+                                                <input type="password" name="password" id="password"> <br><br>
+                                                <input type="submit" name="submit" value="Submit" onclick="Validation()">
                                                 </td>
                                             </tr>
                                         </table>
@@ -62,5 +63,53 @@
                 </td>
             </tr>
         </table>
+        <script>
+            function Validation()
+            {
+                const name = document.getElementById('name').value;
+                const clientaccountno = document.getElementById('clientaccountno').value;
+                const withdrawammount = document.getElementById('withdrawammount').value;
+                const password = document.getElementById('password').value;
+                if(name == '' || accno == '' || ammount == '' || pass == '')
+                {
+                    alert('Null Submission');
+                }
+                /*else
+                {
+
+                let clientaccflag=false;
+                
+        
+                for(let i=0; i<strlen(clientaccountno); i++)
+                {
+                    if((clientaccountno[i] >= 0 ) && (clientaccountno[i] <= 9 ))
+                    {
+                            clientaccflag=true;				         
+                    }
+                }
+                if(clientaccflag == false)
+                {
+                    alert ('Invalid Account Number Format');
+                    errorflag=true;
+                }
+
+                $withdrawammountflag=false;
+        
+                for($i=0;$i<strlen($withdrawammount);$i++)
+                {
+                    if(($withdrawammount[$i] >= 0 ) && ($withdrawammount[$i] <= 9 ))
+                    {
+                        $withdrawammountflag=true;				         
+                    }
+                }
+                if($withdrawammountflag == false)
+                {
+                    echo 'Invalid Ammount Format<br>';
+                    $errorflag=true;
+                }
+                }*/
+            }
+        </script>
+		}
     </body>
 </html>

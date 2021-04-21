@@ -95,29 +95,29 @@
         }
         if(($errorflag == false))
 		{
-            $user = $_SESSION['client'];
-            if($name == $_COOKIE['name'] && $password == $_COOKIE['password'])
+            
+            $conn = mysqli_connect('localhost', 'root', '', 'bms');
+            if($conn == null)
             {
-                setcookie('password', $newpass, time()+3600, '/'); 
-                setcookie('status', 'true', time()+5000, '/');
-                header('location: Login.html');
-
+                die('DB connection error!');
             }
-			else if($name == $user['name'] && $password == $user['password'])
-			{
-                $user['password'] = $newpass;
-                $_SESSION['status'] = true;
+
+            $sql = "UPDATE registration set Pass='$newpass',Repass='$renewpass' WHERE Name = '{$_SESSION['name']}'" ;
+            $result = mysqli_query($conn, $sql);
+            if($result)
+            {
                 header('location: Login.html');
-			}
-			else
-			{
-				echo "invalid Request";
-			}
-		}
-
-
-
-       
-       
+            }
+            else{
+                echo "Something wrong...";
+            }
+        }
+			
+        else
+        {
+            echo "invalid Request";
+        }
+		
     }
+
 ?>

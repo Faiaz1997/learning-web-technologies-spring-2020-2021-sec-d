@@ -46,38 +46,41 @@
 			echo 'Invalid Ammount Format<br>';
 			$errorflag=true;
 		}
-
-
+		if($name!= ($_SESSION['name']))
+		{
+			echo 'Name does not match <br>';
+			$errorflag=true;
 		}
+		if($clientaccountno != ($_SESSION['accno']))
+		{
+			echo 'Account no does not match <br>';
+			$errorflag=true;
+		}
+	}
 		if(($errorflag == false))
 		{
-			$file_info = $_FILES['myfile'];
-            $ext= explode('.', $file_info['name']);
-            $path ='assets/'.time().".".$ext[1];
-        
-            if(move_uploaded_file($file_info['tmp_name'], $path)){
-                echo "success";
-            }else{
-        
-                echo "error";
-            }
-            
-            if($name == $_COOKIE['name'])
-            {
-                setcookie('status', 'true', time()+5000, '/');
-                header('location: applyloan.html');
-            }
-            $user = $_SESSION['client'];
-			if($name == $user['name'])
+           
+			$conn = mysqli_connect('localhost', 'root', '', 'bms');
+			if($conn == null)
 			{
-						$_SESSION['status'] = true;
-						header('location: applyloan.html');
+			die('DB connection error!');
+			}
+			$sql = "INSERT INTO `loan`(`name`, `AccNo`, `type`, `purpose`, `ammount`) VALUES ('$name', $clientaccountno, 
+			'$loantype','$loanpurpose ', '$loanammount')";
+			$result = mysqli_query($conn, $sql);
+			if($result)
+			{
+				header('location: applyloan.html');
 			}
 			else
 			{
+				echo "something wrong...";
+			} 			
+		}
+		else
+			{
 				echo "invalid Request";
 			}
-		}
 	}
 
 ?>

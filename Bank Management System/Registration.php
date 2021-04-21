@@ -12,8 +12,10 @@
         $confirmpass = $_POST['confirmpassword'];
         $gender		= $_POST['gender'];
         $dob = $_POST['dob'];
+		$deposit = $_POST['deposit'];
 
-        if($name == '' || $email == '' || $address == '' || $phone == '' || $password == '' || $confirmpass == '' || $gender == "" || $dob == '')
+        if($name == '' || $email == '' || $address == '' || $phone == '' || $password == '' || $confirmpass == '' || $gender == "" || $dob == '' 
+		|| $deposit == '')
         {
             echo "Null Submission<br>";
 			$errorflag=true;
@@ -49,6 +51,22 @@
 				echo 'Invalid phone number Format<br>';
 				$errorflag=true;
 			}
+
+			$depositflag=false;
+	
+			for($i=0;$i<strlen($deposit);$i++)
+			{
+				if(($deposit[$i] >= 0 ) && ($deposit[$i] <= 9 ))
+				{
+						$depositflag=true;				         
+				}
+			}
+			if($depositflag == false)
+			{
+				echo 'Invalid deposit ammount<br>';
+				$errorflag=true;
+			}
+
 			else if((strlen($phone) <7) || (strlen($phone) >11))
 				{
 					echo 'Invalid Number <br>';
@@ -84,19 +102,41 @@
 				echo "Confirmed password does't match with password<br>";
 				$errorflag=true;
 			}
+			if($deposit<= 0)
+			{
+				echo "Invalid deposit ammount";
+				$errorflag=true;
+			}
 		}
 		if(($errorflag == false))
 		{
-				$user = [
+				/*$user = [
 					'name'		=>$name, 
-					'email'		=>$email, 
 					'password'	=>$password
 				];
 
-				$_SESSION['client'] = $user;
-				setcookie('name', $name, time()+3600, '/');
-				setcookie('password', $password, time()+3600, '/'); 
-				header('location: Login.html');
+				$_SESSION['client'] = $user;*/
+				$conn = mysqli_connect('localhost', 'root', '', 'bms');
+				if($conn == null){
+					die('DB connection error!');
+				}
+
+				$sql = "INSERT INTO `registration` (`Acc No`, `Name`, `Email`, `Address`, `Phone`, `Deposit`, `Gender`,
+				`DOB`, `Pass`, `Repass`) VALUES (NULL, '$name', '$email', '$address', '$phone', '$deposit', '$gender', '$dob', 
+				'$password', '$confirmpass')";
+				$result = mysqli_query($conn, $sql);
+				if($result)
+				{
+					echo "success";
+					header('location: Login.html');
+				}
+				else{
+					echo "something wrong...";
+				}
+
+				/*setcookie('name', $name, time()+3600, '/');
+				setcookie('password', $password, time()+3600, '/');*/
+				
 		}
 
        

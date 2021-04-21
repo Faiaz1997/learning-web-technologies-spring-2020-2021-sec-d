@@ -1,24 +1,27 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>
-            Client Loan Application
+            Client Home page
         </title>
     </head>
     <body>
             <table align="center" width="100%" height="80px" border="1">
                 <tr>
-                    <td align="center" width="25%"><a href="clienthome.php">Home</a> </td>
+                <td align="center" width="25%"><a href="clienthome.php">Home</a> </td>
                     <td align="center" width="25%"><a href="applyloan.html">Loan</a> </td>
                     <td align="center" width="25%">Business Analytics</td>
-                    <td align="center" width="25%"><a href="contactadmin.html">Contact Us</a></td>      
+                    <td align="center" width="25%"><a href="contactadmin.html">Contact Us</a></td>    
                 </tr>
             </table>
             <table border="1" width="100%">
                 <tr>
                     <td width="20%">
                         <table height="600px">
-                            <tr><td><b>Accounts</b></td></tr>
+                        <tr><td><b>Accounts</b></td></tr>
                             <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
                             <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
                             <tr><td><b>Fund Transfer</b></td></tr>
@@ -34,7 +37,8 @@
                     </td>
                     <td width="80%">
                         <table align="center" >
-                            <tr><td><b>Requirements for Loan</b><br><br><br></td></tr>
+                            <tr><td><b><?php echo "Welcome ",$_SESSION['name']?></b><br><br><br></td></tr>
+                            <tr><td><b>Features:</b><br></td></tr>
                             <tr><td><p>
                                 1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus fringilla interdum. Nam a congue lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
                                 Nulla tincidunt nulla tristique, commodo odio ac, cursus ante. Integer nibh eros, blandit sit amet massa sit amet, viverra consequat metus. Aliquam posuere auctor erat eget luctus. 
@@ -51,59 +55,8 @@
                                 quam augue, id consectetur odio finibus sed. Sed nec gravida sem. Proin aliquam bibendum quam nec tristique. Nulla nunc arcu, blandit vestibulum elit id, mollis finibus sapien. Integer elementum leo quis nunc feugiat, id 
                                 eleifend neque porta. Donec dignissim felis arcu, vel cursus elit pharetra eu.
                             </p></td></tr>
-                            <tr>
-                                <td >
-                                    <form method="POST" action="applyloan.php" enctype="multipart/form-data">
-                                        <fieldset >
-                                            <legend>Loan Application Form</legend>                                            
-                                            <table align="center" >
-                                                <tr>
-                                                    <td>
-                                                        Name: <br><br>
-                                                        <input type="text" name="name"><br><br>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Account No: <br><br>
-                                                        <input type="text" name="clientaccountno"><br><br>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Loan Type: <br><br>
-                                                        <select name="loantype" >
-                                                            <option value=""></option>
-                                                            <option value="Education">Education</option>
-                                                            <option value="Car">Car</option>
-                                                            <option value="Home">Home</option>
-                                                        </select> <br><br>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Loan Purpose: <br><br>
-                                                        <textarea name="loanpurpose" id="loanpurpose" cols="90" rows="10"></textarea><br><br>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Loan Ammount: <br><br>
-                                                        <input type="text" name="loanammount"><br><br>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="submit" name="submit" value="Submit">
-                                                    </td>
-                                                </tr>
-        
-                                            </table>
-                                        </fieldset>
-                                    </form>
-                                </td>
-                            </tr>
                         </table>
+
                     </td>
                 </tr>
             </table>
