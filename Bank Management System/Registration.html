@@ -57,12 +57,13 @@
 							</tr>
 							<tr>
 								<td>Confirm Password:</td>
-								<td><input type="password" name="confirmpassword"  id="confirmedpassword"></td>
+								<td><input type="password" name="confirmpassword"  id="confirmpassword"></td>
 							</tr>
 							<tr>
-								<td colspan='2' align="center">
+								<td colspan="2" align="right">
 									<input type="submit" name="submit" value="Submit" onclick="Validation()">
 									<input type="reset" name="reset" value="Reset">
+									<a href="Login.html"> Log In</a>
 								</td>
 							</tr>
 						</table>
@@ -115,9 +116,9 @@
 
 				let phoneflag=false;
 		
-				for(i=0;i<$phone.length;i++)
+				for(i=0;i<phone.length;i++)
 				{
-					if((phone[i] >= 0 ) && (phone[$i] <= 9 ))
+					if((phone[i] >= 0 ) && (phone[i] <= 9 ))
 					{
 							phoneflag=true;				         
 					}
@@ -128,9 +129,15 @@
 					errorflag=true;
 				}
 
+				if((phone.length <7) || (phone.length >11))
+					{
+						alert ('Invalid Phone Number');
+						errorflag=true;
+					}
+
 				let depositflag=false;
 		
-				for(i=0;i<$deposit.length;i++)
+				for(i=0;i<deposit.length;i++)
 				{
 					if((deposit[i] >= 0 ) && (deposit[i] <= 9 ))
 					{
@@ -143,15 +150,10 @@
 					errorflag=true;
 				}
 
-				if((phone.length <7) || (phone.length >11))
-					{
-						alert ('Invalid Number');
-						errorflag=true;
-					}
 
 				let passflag=false;
 
-				for(i=0;i<$password.length;i++)
+				for(i=0;i<password.length;i++)
 				{
 					if((password[i] == '@' || 
 					password[i] == '$' ||

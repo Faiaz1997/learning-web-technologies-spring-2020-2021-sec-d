@@ -88,7 +88,7 @@
 	
 			if($passflag == false)
 			{
-				echo 'Password must contain atleast one of the special characters (@, $, % or #!)';
+				echo 'Password must contain atleast one of the special characters (@, $, % or #!) <br>';
 				$errorflag=true;
 			}
 			if(strlen($password) < 4)
