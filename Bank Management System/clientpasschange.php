@@ -80,7 +80,7 @@
             echo 'Password can not be confirmed <br>';
             $errorflag=true;
         }
-        else if(strlen($renewpass) < 4)
+        if(strlen($renewpass) < 4)
         {
             echo 'Password can not be confirmed <br/>';
             $errorflag=true;

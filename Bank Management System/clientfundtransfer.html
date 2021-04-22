@@ -43,24 +43,24 @@
                                             <tr>
                                                 <td width="40%" align="center">
                                                             Name: <br><br>
-                                                            <input type="text" name="name"><br><br>
+                                                            <input type="text" name="name" id="name"><br><br>
                                                             Account No: <br><br>
-                                                            <input type="text" name="clientaccountno"><br><br>
+                                                            <input type="text" name="clientaccountno" id="clientaccountno"><br><br>
                                                             Password: <br><br>
-                                                            <input type="password" name="password"> <br><br>          
+                                                            <input type="password" name="password" id="password"> <br><br>          
                                                 </td>
                                                 <td width="40%" align="center">
                                                             Receiver's Name: <br><br>
-                                                            <input type="text" name="receivername"><br><br>
+                                                            <input type="text" name="receivername" id="receivername"><br><br>
                                                             Receiver's Account no: <br><br>
-                                                            <input type="text" name="receiveraccno"><br><br>
+                                                            <input type="text" name="receiveraccno" id="receiveraccno"><br><br>
                                                             Ammount: <br><br>
-                                                            <input type="text" name="transferammount"><br><br>
+                                                            <input type="text" name="transferammount" id="transferammount"><br><br>
                                                 </td>
                                             </tr>
                                                 <tr>
                                                     <td colspan="2" align="center">
-                                                        <input type="submit" name="submit" value="Submit">
+                                                        <input type="submit" name="submit" value="Submit" onclick="Validation()">
                                                     </td>
                                                 </tr>       
                                             </tr>
@@ -73,5 +73,71 @@
                 </td>
             </tr>
         </table>
+        <script>
+            function Validation()
+            {
+                const name = document.getElementById('name').value;
+                const clientaccountno = document.getElementById('clientaccountno').value;
+                const password = document.getElementById('password').value;
+                const receivername = document.getElementById('receivername').value;
+                const receiveraccno = document.getElementById('receiveraccno').value;
+                const transferammount = document.getElementById('transferammount').value;
+                let errorflag=false;
+                let i=0;
+
+                if(name == '' || clientaccountno == '' || transferammount == '' || password == '' ||receivername == ''  || receiveraccno  == ''  )
+                    {
+                        alert("Null Submission");
+                        errorflag=true;
+                    }
+                else
+                {
+
+                    let clientaccflag=false;
+            
+                    for(i=0;i<clientaccountno.length;i++)
+                    {
+                        if((clientaccountno[i] >= 0 ) && ($clientaccountno[i] <= 9 ))
+                        {
+                                clientaccflag=true;				         
+                        }
+                    }
+                    if(clientaccflag == false)
+                    {
+                        alert ('Invalid Account Number Format');
+                        errorflag=true;
+                    }
+                    let rcvaccflag=false;
+            
+                    for(i=0;i<receiveraccno.length;i++)
+                    {
+                        if((receiveraccno[i] >= 0 ) && ($receiveraccno[i] <= 9 ))
+                        {
+                            rcvaccflag=true;				         
+                        }
+                    }
+                    if(rcvaccflag == false)
+                    {
+                        alert ('Invalid Receiver Account Number Format');
+                        errorflag=true;
+                    }
+
+                    let transferammountflag=false;
+            
+                    for(i=0;i<transferammount.length;i++)
+                    {
+                        if((transferammount[i] >= 0 ) && (transferammount[i] <= 9 ))
+                        {
+                            transferammountflag=true;				         
+                        }
+                    }
+                    if(transferammountflag == false)
+                    {
+                        alert('Invalid Ammount Format');
+                        errorflag=true;
+                    }           
+                }
+            }
+        </script>
     </body>
 </html>

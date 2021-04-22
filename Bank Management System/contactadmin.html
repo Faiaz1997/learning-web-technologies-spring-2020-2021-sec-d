@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Client Fund Transfer
+            Contact Us
         </title>
     </head>
     <body>
@@ -60,19 +60,19 @@
                                             <tr>
                                                 <td>
                                                     Name: <br><br>
-                                                    <input type="text" name="name"><br><br>
+                                                    <input type="text" name="name" id="name"><br><br>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     Account No: <br><br>
-                                                    <input type="text" name="clientaccountno"><br><br>
+                                                    <input type="text" name="clientaccountno" id="clientaccountno"><br><br>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     Contact with: <br><br>
-                                                    <select name="contact" >
+                                                    <select name="contact" id="contact">
                                                         <option value=""></option>
                                                         <option value="Manager">Manager</option>
                                                         <option value="Card Manager">Card Manager</option>
@@ -88,7 +88,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="submit" name="submit" value="Submit">
+                                                    <input type="submit" name="submit" value="Submit" onclick="Validation()">
                                                 </td>
                                             </tr>
                                         </table>
@@ -100,5 +100,39 @@
                 </td>
             </tr>
         </table>
+        <script>
+            function Validation()
+            {
+                const name = document.getElementById('name').value;
+                const clientaccountno = document.getElementById('clientaccountno').value;
+                const contact= document.getElementById('contact').value;
+                const text= document.getElementById('text').value;
+            
+                let errorflag=false;
+                if(name == '' || clientaccountno == '' || contact== '' || text  == '')
+                {
+                    alert('Null Submission');
+                    errorflag=true;
+                }
+                else
+                {
+                    let i=0;
+                    let clientaccflag=false;
+                    
+                    for(i=0; i<=clientaccountno.length; i++)
+                    {
+                        if(clientaccountno[i]  >= 0  && clientaccountno[i]  <= 9 )
+                        {
+                                clientaccflag=true;			         
+                        }
+                    }
+                    if(clientaccflag == false)
+                    {
+                        alert ('Invalid Account Number Format');
+                        errorflag=true;
+                    }  
+                }
+            }
+        </script>
     </body>
 </html>

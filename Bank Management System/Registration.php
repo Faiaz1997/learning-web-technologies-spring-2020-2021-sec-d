@@ -67,7 +67,7 @@
 				$errorflag=true;
 			}
 
-			else if((strlen($phone) <7) || (strlen($phone) >11))
+			if((strlen($phone) <7) || (strlen($phone) >11))
 				{
 					echo 'Invalid Number <br>';
 					$errorflag=true;
@@ -91,7 +91,7 @@
 				echo 'Password must contain atleast one of the special characters (@, $, % or #!)';
 				$errorflag=true;
 			}
-			else if(strlen($password) < 4)
+			if(strlen($password) < 4)
 			{
 				echo 'Password must contain atleast 4 characters<br/>';
 				$errorflag=true;
@@ -127,7 +127,6 @@
 				$result = mysqli_query($conn, $sql);
 				if($result)
 				{
-					echo "success";
 					header('location: Login.html');
 				}
 				else{

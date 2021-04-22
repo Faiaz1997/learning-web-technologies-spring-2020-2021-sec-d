@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Client Information
+            Client Password Change
         </title>
     </head>
     <body>
@@ -42,16 +42,16 @@
                                         <table>
                                             <tr><td align="center">
                                                 Name: <br><br>
-                                                <input type="text" name="name"><br><br>
+                                                <input type="text" name="name" id="name"><br><br>
                                                 Account No: <br><br>
-                                                <input type="text" name="clientaccountno"><br><br>
+                                                <input type="text" name="clientaccountno" id="clientaccountno"><br><br>
                                                 Current Password: <br><br>
-                                                <input type="password" name="password"> <br><br>
+                                                <input type="password" name="password" id="password"> <br><br>
                                                 New Password: <br><br>
-                                                <input type="password" name="newpass"> <br><br>
+                                                <input type="password" name="newpass" id="newpass"> <br><br>
                                                 Confirm New Password: <br><br>
-                                                <input type="password" name="renewpass"><br><br>
-                                                <input type="submit" name="submit" value="Submit">
+                                                <input type="password" name="renewpass" id="renewpass"><br><br>
+                                                <input type="submit" name="submit" value="Submit" onclick="Validation()">
                                             </td></tr>
                                         </table>
                                     </fieldset>
@@ -62,5 +62,115 @@
                 </td>
             </tr>
         </table>
+        <script>
+            function Validation()
+            {
+                const name = document.getElementById('name').value;
+                const clientaccountno = document.getElementById('clientaccountno').value;
+                const password = document.getElementById('password').value;
+                const newpass = document.getElementById('newpass').value;
+                const renewpass = document.getElementById('renewpass').value;
+            
+                let errorflag=false;
+                if(name == '' || clientaccountno == '' || password== '' || newpass == '' || renewpass== '')
+                {
+                    alert('Null Submission');
+                    errorflag=true;
+                }
+                else
+                {
+                    let i=0;
+                    let clientaccflag=false;
+                    
+                    for(i=0; i<=clientaccountno.length; i++)
+                    {
+                        if(clientaccountno[i]  >= 0  && clientaccountno[i]  <= 9 )
+                        {
+                                clientaccflag=true;			         
+                        }
+                    }
+                    if(clientaccflag == false)
+                    {
+                        alert ('Invalid Account Number Format');
+                        errorflag=true;
+                    }
+                    let passflag=false;
+
+                    for(i=0;i<password.length;i++)
+                    {
+                        if((password[i] == '@' || 
+                        password[i] == '$' ||
+                        password[i] == '#' ||
+                        password[i] == '%')) 
+                        {
+                            passflag=true;
+                        }
+                    }
+
+                    if(passflag == false)
+                    {
+                        alert ('Password must contain atleast one of the special characters (@, $, % or #!)');
+                        errorflag=true;
+                    }
+                    if((password.length) < 4)
+                    {
+                        alert ('Password must contain atleast 4 characters');
+                        errorflag=true;
+                    }
+                    let newpassflag=false;
+
+                    for(i=0;i<newpass.length;i++)
+                    {
+                        if((newpass[i] == '@' || 
+                        newpass[i] == '$' ||
+                        newpass[i] == '#' ||
+                        newpass[i] == '%')) 
+                        {
+                            newpass=true;
+                        }
+                    }
+
+                    if(newpassflag == false)
+                    {
+                        alert ('New Password must contain atleast one of the special characters (@, $, % or #!)');
+                        errorflag=true;
+                    }
+                    if((newpass.length) < 4)
+                    {
+                        alert ('New Password must contain atleast 4 characters');
+                        errorflag=true;
+                    }
+                    let renewpassflag=false;
+
+                    for(i=0;i<renewpass.length;i++)
+                    {
+                        if((renewpass[i] == '@' || 
+                        renewpass[i] == '$' ||
+                        renewpass[i] == '#' ||
+                        renewpass[i] == '%')) 
+                        {
+                            renewpassflag=true;
+                        }
+                    }
+
+                    if(renewpassflag == false)
+                    {
+                        alert ('Confirmed Password must contain atleast one of the special characters (@, $, % or #!)');
+                        errorflag=true;
+                    }
+                    if((renewpass.length) < 4)
+                    {
+                        alert ('Confirmed Password must contain atleast 4 characters');
+                        errorflag=true;
+                    }
+
+                    if(newpass != renewpass )
+                    {
+                        alert ("Password can not be confirmed");
+                        errorflag=true;
+                    }     
+                }
+            }
+        </script>
     </body>
 </html>

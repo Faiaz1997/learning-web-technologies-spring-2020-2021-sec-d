@@ -10,8 +10,17 @@
         $receiveraccno = $_POST['receiveraccno'];
 		$transferammount = $_POST['transferammount'];
         $password = $_POST['password'];
+		$conn = mysqli_connect('localhost', 'root', '', 'bms');
+		if($conn == null)
+			{
+				die('DB connection error!');
+			}
+	
+			$_SESSION['rname'] = $receivername;
+			$_SESSION['raccno'] = $receiveraccno;
+		
 
-        if($name == '' || $clientaccountno == '' || $transferammount == '' || $password == '' )
+        if($name == '' || $clientaccountno == '' || $transferammount == '' || $password == '' ||$receivername == ''  || $receiveraccno  == ''  )
         {
             echo "Null Submission<br>";
 			$errorflag=true;
@@ -31,6 +40,20 @@
 			if($clientaccflag == false)
 			{
 				echo 'Invalid Account Number Format<br>';
+				$errorflag=true;
+			}
+			$rcvaccflag=false;
+            
+			for($i=0;$i<strlen($receiveraccno);$i++)
+			{
+				if(($receiveraccno[$i] >= 0 ) && ($receiveraccno[$i] <= 9 ))
+				{
+					$rcvaccflag=true;				         
+				}
+			}
+			if($rcvaccflag == false)
+			{
+				echo 'Invalid Receiver Account Number Format<br>';
 				$errorflag=true;
 			}
 
@@ -53,6 +76,11 @@
 				echo 'Name does not match <br>';
 				$errorflag=true;
 			}
+			if($receivername!= ($_SESSION['rname']))
+			{
+				echo 'Receiver Name does not match <br>';
+				$errorflag=true;
+			}
 			if($password != ($_SESSION['pass']))
 			{
 				echo 'Password does not match <br>';
@@ -63,46 +91,53 @@
 				echo 'Account no does not match <br>';
 				$errorflag=true;
 			}
-
-        }
-        if(($errorflag == false))
-		{
-			$conn = mysqli_connect('localhost', 'root', '', 'bms');
-			if($conn == null)
+			if($receiveraccno != ($_SESSION['raccno']))
 			{
-			die('DB connection error!');
+				echo 'Receiver account no does not match <br>';
+				$errorflag=true;
 			}
-			$sql = "SELECT * FROM registration WHERE Name = '{$_SESSION['name']}'" ;
-            $result = mysqli_query($conn, $sql);
-			$row = mysqli_fetch_assoc($result);
-			if($row['Deposit']>$transferammount)
+			if(($errorflag == false))
 			{
-				$sql = "UPDATE registration set Deposit= (Deposit-'$transferammount') WHERE Name = '{$_SESSION['name']}' 
-				&& AccNo = '{$_SESSION['accno']}'" ;
+			
+				$sql = "SELECT * FROM registration WHERE Name = '{$_SESSION['name']}'" ;
 				$result = mysqli_query($conn, $sql);
-				if($result)
+				$row = mysqli_fetch_assoc($result);
+				if($row['Deposit']>$transferammount)
 				{
-					$sql = "UPDATE registration set Deposit= (Deposit+'$transferammount') WHERE Name = '$receivername' && AccNo = '$receiveraccno'" ;
+					$sql = "UPDATE registration set Deposit= (Deposit-'$transferammount') WHERE Name = '{$_SESSION['name']}' 
+					&& AccNo = '{$_SESSION['accno']}'" ;
 					$result = mysqli_query($conn, $sql);
-					$sql = "SELECT * FROM registration WHERE Name = '{$_SESSION['name']}' && AccNo = '{$_SESSION['accno']}'" ;
-					$result = mysqli_query($conn, $sql);
-					$row = mysqli_fetch_assoc($result);
-					$balance = $row['Deposit'];
 					if($result)
 					{
-						$sql = "INSERT INTO `transaction`(`AccNo`,`transactionId`, `senderid`, `receiverid`, `type`, `credit`, `debit`, `balance`) 
-						VALUES ('{$_SESSION['accno']}',NULL, '{$_SESSION['accno']}','$receiveraccno','Transfer','NULL','$transferammount','$balance')";
+						$sql = "UPDATE registration set Deposit= (Deposit+'$transferammount') WHERE Name = '$receivername' && AccNo = '$receiveraccno'" ;
 						$result = mysqli_query($conn, $sql);
-						$sql = "SELECT * FROM registration WHERE Name = '$receivername' && AccNo = '$receiveraccno'" ;
+						$sql = "SELECT * FROM registration WHERE Name = '{$_SESSION['name']}' && AccNo = '{$_SESSION['accno']}'" ;
 						$result = mysqli_query($conn, $sql);
 						$row = mysqli_fetch_assoc($result);
 						$balance = $row['Deposit'];
-						$sql = "INSERT INTO `transaction`(`AccNo`,`transactionId`, `senderid`, `receiverid`, `type`, `credit`, `debit`, `balance`) 
-						VALUES ('$receiveraccno',NULL, '{$_SESSION['accno']}','$receiveraccno','Transfer','$transferammount','NULL','$balance')";
-						$result = mysqli_query($conn, $sql);
 						if($result)
 						{
-							header('location: clientfundtransfer.html');
+							$sql = "INSERT INTO `transaction`(`AccNo`,`transactionId`, `senderid`, `receiverid`, `type`, `credit`, `debit`, `balance`) 
+							VALUES ('{$_SESSION['accno']}',NULL, '{$_SESSION['accno']}','$receiveraccno','Transfer','NULL','$transferammount','$balance')";
+							$result = mysqli_query($conn, $sql);
+							
+							$sql = "SELECT * FROM registration WHERE Name = '$receivername' && AccNo = '$receiveraccno'" ;
+							$result = mysqli_query($conn, $sql);
+							$row = mysqli_fetch_assoc($result);
+							$balance = $row['Deposit'];
+							
+							$sql = "INSERT INTO `transaction`(`AccNo`,`transactionId`, `senderid`, `receiverid`, `type`, `credit`, `debit`, `balance`) 
+							VALUES ('$receiveraccno',NULL, '{$_SESSION['accno']}','$receiveraccno','Transfer','$transferammount','NULL','$balance')";
+							$result = mysqli_query($conn, $sql);
+						
+							if($result)
+							{
+								header('location: clientfundtransfer.html');
+							}
+							else
+							{
+								echo "Something wrong...";
+							}
 						}
 						else
 						{
@@ -114,19 +149,11 @@
 						echo "Something wrong...";
 					}
 				}
-				else{
-					echo "Something wrong...";
+				else
+				{
+					echo "Insufficient Balance";
 				}
 			}
-			else
-			{
-                echo "Insufficient Balance";
-            }
 		}
-
-
-
-       
-       
     }
 ?>

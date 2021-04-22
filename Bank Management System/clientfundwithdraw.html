@@ -70,46 +70,46 @@
                 const clientaccountno = document.getElementById('clientaccountno').value;
                 const withdrawammount = document.getElementById('withdrawammount').value;
                 const password = document.getElementById('password').value;
-                if(name == '' || accno == '' || ammount == '' || pass == '')
+
+                let errorflag=false;
+                if(name == '' || clientaccountno == '' || withdrawammount == '' || password == '' )
                 {
                     alert('Null Submission');
-                }
-                /*else
-                {
-
-                let clientaccflag=false;
-                
-        
-                for(let i=0; i<strlen(clientaccountno); i++)
-                {
-                    if((clientaccountno[i] >= 0 ) && (clientaccountno[i] <= 9 ))
-                    {
-                            clientaccflag=true;				         
-                    }
-                }
-                if(clientaccflag == false)
-                {
-                    alert ('Invalid Account Number Format');
                     errorflag=true;
                 }
-
-                $withdrawammountflag=false;
-        
-                for($i=0;$i<strlen($withdrawammount);$i++)
+                else
                 {
-                    if(($withdrawammount[$i] >= 0 ) && ($withdrawammount[$i] <= 9 ))
+                    let clientaccflag=false;
+                    let i=0;
+                    
+                    for(i=0; i<=clientaccountno.length; i++)
                     {
-                        $withdrawammountflag=true;				         
+                        if(clientaccountno[i]  >= 0  && clientaccountno[i]  <= 9 )
+                        {
+                                clientaccflag=true;			         
+                        }
+                    }
+                    if(clientaccflag == false)
+                    {
+                        alert ('Invalid Account Number Format');
+                        errorflag=true;
+                    }
+                    withdrawammountflag=false;
+            
+                    for(i=0;i<withdrawammount.length;i++)
+                    {
+                        if((withdrawammount[i] >= 0 ) && (withdrawammount[i] <= 9 ))
+                        {
+                            withdrawammountflag=true;				         
+                        }
+                    }
+                    if(withdrawammountflag == false)
+                    {
+                        alert ('Invalid Ammount Format');
+                        errorflag=true;
                     }
                 }
-                if($withdrawammountflag == false)
-                {
-                    echo 'Invalid Ammount Format<br>';
-                    $errorflag=true;
-                }
-                }*/
             }
         </script>
-		}
     </body>
 </html>

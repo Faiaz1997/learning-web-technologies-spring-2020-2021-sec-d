@@ -6,17 +6,16 @@
 	{
         $name = $_POST['name'];
         $clientaccountno = $_POST['clientaccountno'];
-        $cardtype = $_POST['cardtype'];
+		$cardtype= $_POST['cardtype'];
+		
 
-
-        if($name == '' || $clientaccountno == '' || $cardtype == '' )
+        if($name == '' || $clientaccountno  == '' || $cardtype == '' )
         {
             echo "Null Submission<br>";
 			$errorflag=true;
         }
 		else
 		{
-
 			$clientaccflag=false;
 	
 			for($i=0;$i<strlen($clientaccountno);$i++)
@@ -31,38 +30,35 @@
 				echo 'Invalid Account Number Format<br>';
 				$errorflag=true;
 			}
-			if($name!= ($_SESSION['name']))
-			{
-				echo 'Name does not match <br>';
-				$errorflag=true;
-			}
+
 			if($clientaccountno != ($_SESSION['accno']))
 			{
 				echo 'Account no does not match <br>';
 				$errorflag=true;
 			}
-        }
-        if(($errorflag == false))
-		{
-			$conn = mysqli_connect('localhost', 'root', '', 'bms');
-			if($conn == null)
-			{
-			die('DB connection error!');
-			}	
-			$sql = "INSERT INTO `card`(`name`, `AccNo`, `cardtype`) VALUES('$name', $clientaccountno, '$cardtype')";
-			$result = mysqli_query($conn, $sql);
-			if($result)
-			{
-				header('location: clientcard.html');
-			}
-			else
-			{
-				echo "something wrong...";
-			} 		
+
 		}
-		else
-			{
-                echo "Invalid Request";
-            } 	
+		if(($errorflag == false))
+		{
+				$conn = mysqli_connect('localhost', 'root', '', 'bms');
+				if($conn == null){
+					die('DB connection error!');
+				}
+
+				$sql = "INSERT INTO `card`(`name`, `AccNo`, `cardtype`) VALUES ('$name', '$clientaccountno', '$cardtype')";
+				$result = mysqli_query($conn, $sql);
+				if($result)
+				{
+					header('location: clientcard.html');
+				}
+				else{
+					echo "something wrong...";
+				}
+
+				
+		}
+
+       
+       
     }
 ?>
