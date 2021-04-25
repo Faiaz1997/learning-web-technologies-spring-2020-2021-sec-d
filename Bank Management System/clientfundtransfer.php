@@ -99,7 +99,7 @@
 			if(($errorflag == false))
 			{
 			
-				$sql = "SELECT * FROM registration WHERE Name = '{$_SESSION['name']}'" ;
+				$sql = "SELECT * FROM registration WHERE Name = '{$_SESSION['name']}' && AccNo = '{$_SESSION['accno']}'" ;
 				$result = mysqli_query($conn, $sql);
 				$row = mysqli_fetch_assoc($result);
 				if($row['Deposit']>$transferammount)

@@ -25,7 +25,7 @@
                         <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
                         <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
                         <tr><td><b>Requests</b></td></tr>
-                        <tr><td><a href="clientcard.html">Issue Atm Card</a></td></tr>
+                        <tr><td><a href="clientcard.php">Atm Card</a></td></tr>
                         <tr><td><b>Profile</b></td></tr>
                         <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
                         <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
@@ -36,7 +36,7 @@
                     <table align="center" width="60%">
                         <tr>
                             <td align="center">
-                                <form method="POST" action="clientfundtransfer.php">
+                                <form method="POST" action="clientfundtransfer.php" onsubmit="return Validation()">
                                     <fieldset>
                                         <legend>Fund Transfer</legend>
                                         <table >
@@ -60,7 +60,7 @@
                                             </tr>
                                                 <tr>
                                                     <td colspan="2" align="center">
-                                                        <input type="submit" name="submit" value="Submit" onclick="Validation()">
+                                                        <input type="submit" name="submit" value="Submit">
                                                     </td>
                                                 </tr>       
                                             </tr>
@@ -135,8 +135,16 @@
                     {
                         alert('Invalid Ammount Format');
                         errorflag=true;
-                    }           
+                    }          
                 }
+                if(errorflag==false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                } 
             }
         </script>
     </body>

@@ -4,11 +4,11 @@
 	<title>Registration</title>
 </head>
 <body>
-
+	
 	<table align="center">
 		<tr>
 			<td>
-				<form method="POST" action="Registration.php">
+				<form method="POST" action="Registration.php" onsubmit="return Validation()" >
 					<fieldset>
 						<legend align="center">Registration</legend>
 						<table>
@@ -61,7 +61,7 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="right">
-									<input type="submit" name="submit" value="Submit" onclick="Validation()">
+									<input type="submit" name="submit" value="Submit">
 									<input type="reset" name="reset" value="Reset">
 									<a href="Login.html"> Log In</a>
 								</td>
@@ -74,7 +74,7 @@
 
 			</td>
 		</tr>
-	</table>
+	</table> 
 	<script>
 		function Validation()
 		{
@@ -88,7 +88,7 @@
 			const dob= document.getElementById('dob').value;
 			const deposit = document.getElementById('deposit').value;
 
-			let errorflag=false;
+			let errorflag =false;
 			let i=0;
 
 			if(name == '' || email == '' || address == '' || phone == '' || password == '' || confirmpassword  == '' 
@@ -186,6 +186,15 @@
 					errorflag=true;
 				}
 			}
+			if(errorflag==false)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
 		}
 	</script>
 </body>

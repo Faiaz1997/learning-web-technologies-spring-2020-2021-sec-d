@@ -1,64 +1,156 @@
 <?php
-	session_start();
-	$errorflag=false;
-
-	if(isset($_POST['submit']))
-	{
-        $name = $_POST['name'];
-        $clientaccountno = $_POST['clientaccountno'];
-		$cardtype= $_POST['cardtype'];
-		
-
-        if($name == '' || $clientaccountno  == '' || $cardtype == '' )
-        {
-            echo "Null Submission<br>";
-			$errorflag=true;
-        }
-		else
-		{
-			$clientaccflag=false;
-	
-			for($i=0;$i<strlen($clientaccountno);$i++)
-			{
-				if(($clientaccountno[$i] >= 0 ) && ($clientaccountno[$i] <= 9 ))
-				{
-						$clientaccflag=true;				         
-				}
-			}
-			if($clientaccflag == false)
-			{
-				echo 'Invalid Account Number Format<br>';
-				$errorflag=true;
-			}
-
-			if($clientaccountno != ($_SESSION['accno']))
-			{
-				echo 'Account no does not match <br>';
-				$errorflag=true;
-			}
-
-		}
-		if(($errorflag == false))
-		{
-				$conn = mysqli_connect('localhost', 'root', '', 'bms');
-				if($conn == null){
-					die('DB connection error!');
-				}
-
-				$sql = "INSERT INTO `card`(`name`, `AccNo`, `cardtype`) VALUES ('$name', '$clientaccountno', '$cardtype')";
-				$result = mysqli_query($conn, $sql);
-				if($result)
-				{
-					header('location: clientcard.html');
-				}
-				else{
-					echo "something wrong...";
-				}
-
-				
-		}
-
-       
-       
-    }
+    session_start();
 ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Client Card Application
+        </title>
+    </head>
+    <body>
+        <table align="center" width="100%" height="80px" border="1">
+            <tr>
+                <td align="center" width="25%"><a href="clienthome.php">Home</a> </td>
+                <td align="center" width="25%"><a href="applyloan.html">Loan</a> </td>
+                <td align="center" width="25%">Business Analytics</td>
+                <td align="center" width="25%"><a href="contactadmin.html">Contact Us</a></td>     
+            </tr>
+        </table>
+        <table border="1" width="100%">
+            <tr>
+                <td width="20%">
+                    <table height="600px">
+                        <tr><td><b>Accounts</b></td></tr>
+                        <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
+                        <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
+                        <tr><td><b>Fund Transfer</b></td></tr>
+                        <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
+                        <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
+                        <tr><td><b>Requests</b></td></tr>
+                        <tr><td><a href="clientcard.php">Atm Card</a></td></tr>
+                        <tr><td><b>Profile</b></td></tr>
+                        <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
+                        <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
+                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
+                    </table>
+                </td>
+                <td width="80%">
+                    <table align="center" >
+                        
+                        <tr>
+                            <td >
+                                <form method="POST" action="clientcardv.php" onsubmit="return Validation()">
+                                    <fieldset>
+                                        <legend>Card Application Form</legend>                                            
+                                        <table align="center" >
+                                            <tr>
+                                                <td>
+                                                    Name: <br><br>
+                                                    <input type="text" name="name" id="name"><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Account No: <br><br>
+                                                    <input type="text" name="clientaccountno" id="clientaccountno"><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Card Type: <br><br>
+                                                    <select name="cardtype" id="cardtype">
+                                                        <option value=""></option>
+                                                        <option value="Visa">Visa Debit Card</option>
+                                                        <option value="MasterCard">MasterCard Debit Card</option>
+                                                        <option value="Maestro">Maestro Debit Cards</option>
+                                                        <option value="Platinum">Platinum Debit Card.</option>
+                                                    </select> <br><br>
+                                                </td>
+                                            </tr>
+                                            <tr align="center">
+                                                <td >
+                                                    <input type="submit" name="submit" value="Submit" ><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                            <?php
+                                            	$conn = mysqli_connect('localhost', 'root', '', 'bms');
+                                                if($conn == null){
+                                                    die('DB connection error!');
+                                                }
+                                                $sql = "SELECT * FROM card WHERE AccNo = '{$_SESSION['accno']}' && 
+                                                status = 'Enabled'";
+                                                $result = mysqli_query($conn, $sql);
+                                                echo "<table border=1 align='center'  width='100%'>
+                                                    <tr align='center'>
+                                                        <td>Name</td>
+                                                        <td>Account No</td>
+                                                        <td>Card Type</td>
+                                                        <td>Status</td>
+                                                    </tr>";   
+                                                    while($row = mysqli_fetch_assoc($result))
+                                                    {
+                                                        echo "<tr align='center'>
+                                                        <td>{$row['name']}</td>
+                                                        <td>{$row['AccNo']}</td>
+                                                        <td>{$row['cardtype']}</td>
+                                                        <td>{$row['status']}</td>
+                                                        </tr>";
+                                                    }
+                                                echo "</table>";
+                                             ?>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <script>
+            function Validation()
+            {
+                const name = document.getElementById('name').value;
+                const clientaccountno = document.getElementById('clientaccountno').value;
+                const cardtype = document.getElementById('cardtype').value;
+            
+
+                let errorflag=false;
+                let i=0;
+                
+                if(name == '' || clientaccountno == '' || cardtype== '' )
+                {
+                    alert('Null Submission');
+                    errorflag=true;
+                }
+                else
+                {
+                    let clientaccflag=false; 
+                    for(i=0; i<=clientaccountno.length; i++)
+                    {
+                        if(clientaccountno[i]  >= 0  && clientaccountno[i]  <= 9 )
+                        {
+                                clientaccflag=true;			         
+                        }
+                    }
+                    if(clientaccflag == false)
+                    {
+                        alert ('Invalid Account Number Format');
+                        errorflag=true;
+                    }  
+                }
+                if(errorflag==false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -16,46 +16,48 @@
             <tr>
                 <td width="20%">
                     <table height="400px">
-                        <tr><td><a href="issuecard.html">Issue Card/Cheque Book</a> </td></tr>
+                        <tr><td><a href="issuecard.html">Issue Card</a> </td></tr>
                         <tr><td><a href="cardupdate.html">Card Data Update</a> </td></tr>
                         <tr><td><a href="cardstatus.html">Card Status</a></td></tr>
-                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
+                        <tr><td><a href="logout.php">Log Out</a></td></tr>    
                     </table>
                 </td>
                 <td width="80%">
                     <table align="center" >
                         <tr>
                             <td width="60%" >
-                                <form method="POST" action="issuecard.php">
+                                <form method="POST" action="cardupdate.php">
                                     <fieldset >
-                                        <legend>Card/Cheque Update Form</legend>
+                                        <legend>Card Update Form</legend>
                                         <table align="center">
                                             <tr>
                                                 <td align="center"> 
-                                                    Issue Type: <br><br>
-                                                    <select name="Isuue Type" >
+                                                    Card Type: <br><br>
+                                                    <select name="cardtype" id="cardtype">
                                                         <option value=""></option>
-                                                        <option value="Card">Card</option>
-                                                        <option value="Cheque Book">Cheque</option>
+                                                        <option value="Visa">Visa Debit Card</option>
+                                                        <option value="MasterCard">MasterCard Debit Card</option>
+                                                        <option value="Maestro">Maestro Debit Cards</option>
+                                                        <option value="Platinum">Platinum Debit Card.</option>
                                                     </select> <br><br>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">
                                                     Name: <br><br>
-                                                    <input type="text" name="clientname"><br><br>
+                                                    <input type="text" name="name"><br><br>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">
                                                     Account No: <br><br>
-                                                    <input type="number" name="clientaccountno"> <br><br>
+                                                    <input type="text" name="clientaccountno"> <br><br>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center">
                                                     Status: <br><br>
-                                                    <select name="Status" >
+                                                    <select name="status" >
                                                         <option value=""></option>
                                                         <option value="Active">Active</option>
                                                         <option value="Inactive">Inactive</option>

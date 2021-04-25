@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	<form method="POST" action="Login.php"> 
+	<form method="POST" action="Login.php" onsubmit="return Validation()"> 
 		<fieldset>
 			<legend>Login</legend>
 			<table>
@@ -20,7 +20,7 @@
 				<tr>
 					<td></td>
 					<td>
-						<input type="submit" name="submit" value="Submit" onclick="Validation()">
+						<input type="submit" name="submit" value="Submit">
 						<a href="Registration.html"> Sign Up</a>
 					</td>
 				</tr>
@@ -30,11 +30,22 @@
 	<script>
 		function Validation()
 		{
+			let errorflag =false;
+	
 			const name = document.getElementById('name').value;
             const password = document.getElementById('password').value;
 			if(name == "" || password == "")
 			{
 				alert('Null Submission');
+				errorflag=true;
+			}
+			if(errorflag==false)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
 	</script>

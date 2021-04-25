@@ -25,7 +25,7 @@
                         <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
                         <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
                         <tr><td><b>Requests</b></td></tr>
-                        <tr><td><a href="clientcard.html">Issue Atm Card</a></td></tr>
+                        <tr><td><a href="clientcard.php">Atm Card</a></td></tr>
                         <tr><td><b>Profile</b></td></tr>
                         <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
                         <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
@@ -53,7 +53,7 @@
                         </p></td></tr>
                         <tr>
                             <td >
-                                <form method="POST" action="applyloan.php" enctype="multipart/form-data">
+                                <form method="POST" action="applyloan.php" onsubmit="return Validation()">
                                     <fieldset >
                                         <legend>Loan Application Form</legend>                                            
                                         <table align="center" >
@@ -94,7 +94,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="submit" name="submit" value="Submit" onclick="Validation()">
+                                                    <input type="submit" name="submit" value="Submit">
                                                 </td>
                                             </tr>
     
@@ -117,6 +117,8 @@
                 const loanammount = document.getElementById('loanammount').value;
             
                 let errorflag=false;
+                let i=0;
+
                 if(name == '' || clientaccountno == '' || loantype== '' || loanpurpose  == '' || loanammount== '')
                 {
                     alert('Null Submission');
@@ -124,7 +126,6 @@
                 }
                 else
                 {
-                    let i=0;
                     let clientaccflag=false;
                     
                     for(i=0; i<=clientaccountno.length; i++)
@@ -153,6 +154,14 @@
                         alert('Invalid Ammount Format');
                         errorflag=true;
                     }
+                }
+                if(errorflag==false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
         </script>

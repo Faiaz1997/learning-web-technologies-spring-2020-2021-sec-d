@@ -19,24 +19,24 @@
                 <td width="20%">
                     <table height="600px">
                         <tr><td><b>Accounts</b></td></tr>
-                            <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
-                            <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
-                            <tr><td><b>Fund Transfer</b></td></tr>
-                            <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
-                            <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
-                            <tr><td><b>Requests</b></td></tr>
-                            <tr><td><a href="clientcard.html">Issue Atm Card</a></td></tr>
-                            <tr><td><b>Profile</b></td></tr>
-                            <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
-                            <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
-                            <tr><td><a href="logout.php">Log Out</a></td></tr>   
+                        <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
+                        <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
+                        <tr><td><b>Fund Transfer</b></td></tr>
+                        <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
+                        <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
+                        <tr><td><b>Requests</b></td></tr>
+                        <tr><td><a href="clientcard.php">Atm Card</a></td></tr>
+                        <tr><td><b>Profile</b></td></tr>
+                        <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
+                        <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
+                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
                     </table>
                 </td>
                 <td width="80%">
                     <table align="center" width="30%">
                         <tr>
                             <td align="center">
-                                <form method="POST" action="clientpasschange.php">
+                                <form method="POST" action="clientpasschange.php" onsubmit="return Validation()">
                                     <fieldset>
                                         <legend>Personal Informations</legend>
                                         <table>
@@ -72,6 +72,8 @@
                 const renewpass = document.getElementById('renewpass').value;
             
                 let errorflag=false;
+                let i=0;
+
                 if(name == '' || clientaccountno == '' || password== '' || newpass == '' || renewpass== '')
                 {
                     alert('Null Submission');
@@ -79,7 +81,6 @@
                 }
                 else
                 {
-                    let i=0;
                     let clientaccflag=false;
                     
                     for(i=0; i<=clientaccountno.length; i++)
@@ -168,7 +169,15 @@
                     {
                         alert ("Password can not be confirmed");
                         errorflag=true;
-                    }     
+                    }      
+                }
+                if(errorflag==false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
         </script>

@@ -20,20 +20,20 @@
             <table border="1" width="100%">
                 <tr>
                     <td width="20%">
-                        <table height="600px">
+                    <table height="600px">
                         <tr><td><b>Accounts</b></td></tr>
-                            <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
-                            <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
-                            <tr><td><b>Fund Transfer</b></td></tr>
-                            <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
-                            <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
-                            <tr><td><b>Requests</b></td></tr>
-                            <tr><td><a href="clientcard.html">Issue Atm Card</a></td></tr>
-                            <tr><td><b>Profile</b></td></tr>
-                            <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
-                            <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
-                            <tr><td><a href="logout.php">Log Out</a></td></tr>    
-                        </table>
+                        <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
+                        <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
+                        <tr><td><b>Fund Transfer</b></td></tr>
+                        <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
+                        <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
+                        <tr><td><b>Requests</b></td></tr>
+                        <tr><td><a href="clientcard.php">Atm Card</a></td></tr>
+                        <tr><td><b>Profile</b></td></tr>
+                        <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
+                        <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
+                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
+                    </table>
                     </td>
                     <td width="80%">
                         <table align="center" width="40%">

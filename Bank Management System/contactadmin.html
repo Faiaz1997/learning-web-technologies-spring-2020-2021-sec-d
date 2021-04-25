@@ -19,17 +19,17 @@
                 <td width="20%">
                     <table height="600px">
                         <tr><td><b>Accounts</b></td></tr>
-                            <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
-                            <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
-                            <tr><td><b>Fund Transfer</b></td></tr>
-                            <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
-                            <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
-                            <tr><td><b>Requests</b></td></tr>
-                            <tr><td><a href="clientcard.html">Issue Atm Card</a></td></tr>
-                            <tr><td><b>Profile</b></td></tr>
-                            <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
-                            <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
-                            <tr><td><a href="logout.php">Log Out</a></td></tr>  
+                        <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
+                        <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
+                        <tr><td><b>Fund Transfer</b></td></tr>
+                        <tr><td><a href="clientfundwithdraw.html">Withdraw</a> </td></tr>
+                        <tr><td><a href="clientfundtransfer.html">Transfer</a></td></tr>
+                        <tr><td><b>Requests</b></td></tr>
+                        <tr><td><a href="clientcard.php">Atm Card</a></td></tr>
+                        <tr><td><b>Profile</b></td></tr>
+                        <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
+                        <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
+                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
                     </table>
                 </td>
                 <td width="80%">
@@ -53,7 +53,7 @@
                         </tr>
                         <tr>
                             <td >
-                                <form method="POST" action="contactadmin.php">
+                                <form method="POST" action="contactadmin.php" onsubmit="return Validation()">
                                     <fieldset >
                                         <legend>Contact Us</legend>
                                         <table align="center" >
@@ -88,7 +88,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="submit" name="submit" value="Submit" onclick="Validation()">
+                                                    <input type="submit" name="submit" value="Submit">
                                                 </td>
                                             </tr>
                                         </table>
@@ -109,6 +109,8 @@
                 const text= document.getElementById('text').value;
             
                 let errorflag=false;
+                let i=0;
+
                 if(name == '' || clientaccountno == '' || contact== '' || text  == '')
                 {
                     alert('Null Submission');
@@ -116,7 +118,6 @@
                 }
                 else
                 {
-                    let i=0;
                     let clientaccflag=false;
                     
                     for(i=0; i<=clientaccountno.length; i++)
@@ -131,6 +132,14 @@
                         alert ('Invalid Account Number Format');
                         errorflag=true;
                     }  
+                }
+                if(errorflag==false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
         </script>

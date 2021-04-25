@@ -121,7 +121,7 @@
 					die('DB connection error!');
 				}
 
-				$sql = "INSERT INTO `registration` (`Acc No`, `Name`, `Email`, `Address`, `Phone`, `Deposit`, `Gender`,
+				$sql = "INSERT INTO `registration` (`AccNo`, `Name`, `Email`, `Address`, `Phone`, `Deposit`, `Gender`,
 				`DOB`, `Pass`, `Repass`) VALUES (NULL, '$name', '$email', '$address', '$phone', '$deposit', '$gender', '$dob', 
 				'$password', '$confirmpass')";
 				$result = mysqli_query($conn, $sql);
@@ -137,8 +137,11 @@
 				setcookie('password', $password, time()+3600, '/');*/
 				
 		}
-
+		
        
        
     }
+	else
+		echo('nothing');
+
 ?>
