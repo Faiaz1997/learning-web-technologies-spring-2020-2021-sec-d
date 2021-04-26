@@ -20,7 +20,7 @@
         <table border="1" width="100%">
             <tr>
                 <td width="20%">
-                    <table height="600px">
+                <table height="600px">
                         <tr><td><b>Accounts</b></td></tr>
                         <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
                         <tr><td><a href="transactionhistory.php">Transaction History</a> </td></tr>
@@ -32,7 +32,7 @@
                         <tr><td><b>Profile</b></td></tr>
                         <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
                         <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
-                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
+                        <tr><td><a href="clientlogout.php">Log Out</a></td></tr>  
                     </table>
                 </td>
                 <td width="80%">

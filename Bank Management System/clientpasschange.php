@@ -111,12 +111,12 @@
                 die('DB connection error!');
             }
 
-            $sql = "UPDATE registration set Pass='$newpass',Repass='$renewpass' WHERE Name = '{$_SESSION['name']}  
+            $sql = "UPDATE registration set Pass = '$newpass', Repass = '$renewpass' WHERE Name = '{$_SESSION['name']}' 
             && AccNo = '{$_SESSION['accno']}'" ;
             $result = mysqli_query($conn, $sql);
             if($result)
             {
-                header('location: Login.html');
+                header('location: clientlogin.html');
             }
             else{
                 echo "Something wrong...";

@@ -32,7 +32,7 @@ session_start();
                         <tr><td><b>Profile</b></td></tr>
                         <tr><td><a href="clientdetails.php">Personal Details</a> </td></tr>
                         <tr><td><a href="clientpasschange.html">Change Password</a></td></tr>
-                        <tr><td><a href="logout.php">Log Out</a></td></tr>  
+                        <tr><td><a href="clientlogout.php">Log Out</a></td></tr>  
                     </table>
                     </td>
                     <td width="80%">
