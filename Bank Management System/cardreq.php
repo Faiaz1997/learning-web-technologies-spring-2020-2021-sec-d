@@ -22,6 +22,7 @@
                             <tr><td><a href="carddelete.html">Card Delete</a></td></tr>
                             <tr><td><a href="logout.php">Log Out</a></td></tr>    
                         </table>
+                </td>
                 <td width="80%">
                     <table align="center" width="60%">
                         <tr>
@@ -38,15 +39,14 @@
                                                         if($conn == null){
                                                             die('DB connection error!');
                                                         }
-                                                        $sql = "SELECT * FROM card where status = 'Active' || status = 'Inactive'";
+                                                        $sql = "SELECT * FROM card where reqtype = 'Activate' || reqtype = 'Deactivate '";
                                                         $result = mysqli_query($conn, $sql);
                                                         echo "<table border=1 align='center'  width='100%'>
                                                             <tr align='center'>
                                                                 <td>Name</td>
                                                                 <td>Account No</td>
                                                                 <td>Card Type</td>
-                                                                <td>Status</td>
-                                                               
+                                                                <td>Request Type</td>
                                                             </tr>";   
                                                             while($row = mysqli_fetch_assoc($result))
                                                             {
@@ -54,7 +54,7 @@
                                                                 <td>{$row['name']}</td>
                                                                 <td>{$row['AccNo']}</td>
                                                                 <td>{$row['cardtype']}</td>
-                                                                <td>{$row['status']}</td>
+                                                                <td>{$row['reqtype']}</td>
                                                                 </tr>";
                                                             }
                                                         echo "</table>";

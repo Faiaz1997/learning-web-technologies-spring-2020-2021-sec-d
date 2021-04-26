@@ -138,8 +138,6 @@
 				
 		}
 		
-       
-       
     }
 	else
 		echo('nothing');

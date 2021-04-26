@@ -68,6 +68,16 @@
                                                     </select> <br><br>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>
+                                                    Request Type: <br><br>
+                                                    <select name="reqtype" id="reqtype">
+                                                        <option value=""></option>
+                                                        <option value="Activate">Activate</option>
+                                                        <option value="Deactivate">Deactivate</option>
+                                                    </select> <br><br>
+                                                </td>
+                                            </tr>
                                             <tr align="center">
                                                 <td >
                                                     <input type="submit" name="submit" value="Submit" ><br><br>
@@ -80,7 +90,7 @@
                                                     die('DB connection error!');
                                                 }
                                                 $sql = "SELECT * FROM card WHERE AccNo = '{$_SESSION['accno']}' && 
-                                                status = 'Enabled'";
+                                                status = 'Active'";
                                                 $result = mysqli_query($conn, $sql);
                                                 echo "<table border=1 align='center'  width='100%'>
                                                     <tr align='center'>

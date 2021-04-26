@@ -7,9 +7,10 @@
         $name = $_POST['name'];
         $clientaccountno = $_POST['clientaccountno'];
 		$cardtype= $_POST['cardtype'];
+		$reqtype= $_POST['reqtype'];
 		
 
-        if($name == '' || $clientaccountno  == '' || $cardtype == '' )
+        if($name == '' || $clientaccountno  == '' || $cardtype == '' || $reqtype == ''  )
         {
             echo "Null Submission<br>";
 			$errorflag=true;
@@ -36,6 +37,11 @@
 				echo 'Account no does not match <br>';
 				$errorflag=true;
 			}
+			if($name != ($_SESSION['name']))
+			{
+				echo 'Account name does not match <br>';
+				$errorflag=true;
+			}
 
 		}
 		if(($errorflag == false))
@@ -51,11 +57,11 @@
 
 			{
 				
-			$sql = "INSERT INTO `card`(`name`, `AccNo`, `cardtype`) VALUES ('$name', '$clientaccountno', '$cardtype')";
+			$sql = "INSERT INTO `card`(`name`, `AccNo`, `cardtype`,`reqtype`) VALUES ('$name', '$clientaccountno', '$cardtype','$reqtype')";
 			$result = mysqli_query($conn, $sql);
 			if($result)
 			{
-				header('location: clientcard.html');
+				header('location: clientcard.php');
 			}
 			else
 			{

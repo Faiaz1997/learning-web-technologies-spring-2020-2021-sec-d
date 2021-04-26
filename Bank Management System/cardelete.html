@@ -14,14 +14,13 @@
         </table>
         <table border="1" width="100%">
             <tr>
-                <td width="20%">
-                    <table height="400px">
-                        <tr><td><a href="cardreq.php">Card Requests</a> </td></tr>
-                        <tr><td><a href="cardupdate.html">Card Data Update</a> </td></tr>
-                        <tr><td><a href="cardstatus.php">Card Status</a></td></tr>
-                        <tr><td><a href="carddelete.html">Card Delete</a></td></tr>
-                        <tr><td><a href="logout.php">Log Out</a></td></tr>    
-                    </table>
+                <table height="400px">
+                    <tr><td><a href="cardreq.php">Card Requests</a> </td></tr>
+                    <tr><td><a href="cardupdate.html">Card Data Update</a> </td></tr>
+                    <tr><td><a href="cardstatus.php">Card Status</a></td></tr>
+                    <tr><td><a href="carddelete.html">Card Delete</a></td></tr>
+                    <tr><td><a href="logout.php">Log Out</a></td></tr>    
+                </table>
                 </td>
                 <td width="80%">
                     <table align="center" >
@@ -29,7 +28,7 @@
                             <td width="60%" >
                                 <form method="POST" action="cardupdate.php">
                                     <fieldset >
-                                        <legend>Card Update Form</legend>
+                                        <legend>Card Delete Form</legend>
                                         <table align="center">
                                             <tr>
                                                 <td align="center"> 
@@ -57,17 +56,7 @@
                                             </tr>
                                             <tr>
                                                 <td align="center">
-                                                    Status: <br><br>
-                                                    <select name="status" >
-                                                        <option value=""></option>
-                                                        <option value="Active">Active</option>
-                                                        <option value="Inactive">Inactive</option>
-                                                    </select> <br><br>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center">
-                                                    <input type="submit" name="submit" value="Update">
+                                                    <input type="submit" name="Delete" value="Delete">
                                                 </td>
                                             </tr>
                                         </table>                                       
