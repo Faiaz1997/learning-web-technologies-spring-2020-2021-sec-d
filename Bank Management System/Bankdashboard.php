@@ -13,17 +13,29 @@
         <title>
             Bank Dashboard
         </title>
+        <style>
+            .c1{
+                background-color: #D1EAF7;
+                color:#00A1FF;
+                padding: 10px 10px 10px 10px;
+            }
+            .c2{
+                background-color: #AEFFEA;
+                
+                padding: 10px 10px 10px 10px;
+            }
+        </style>
     </head>
     <body>
-            <table align="center" width="100%">
+            <table align="center" width="100%" >
             </table>
-            <table border="1" width="100%">
-                <tr><td colspan="2" align="center"><h1>
+            <table border="1" width="100%" >
+                <tr class="c1"><td colspan="2" align="center"><h1>
                     Bank Management System
                 </h1></td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td width="20%" class="c1">
                         <table height="400px">
                             <tr><td><a href="./Admin & HR/html/Admin Login.html">Admin Login</a> </td></tr>
                             <tr><td><a href="./Admin & HR/html/HRLogIn.html">HR Login</a> </td></tr> 
@@ -34,10 +46,10 @@
                             <tr><td><a href="./Accounts & Payment Manager/loginforacc.php">Accounts Manager & Payment Manager Login</a> </td></tr>
                         </table>
                     </td>
-                    <td width="80%">
+                    <td width="80%"class="c2">
                         <table align="center" >
                         <tr>
-                            <td>
+                            <td >
                                 <fieldset>
                                     <legend><h1>Notice Board</h1></legend>
                                     <?php

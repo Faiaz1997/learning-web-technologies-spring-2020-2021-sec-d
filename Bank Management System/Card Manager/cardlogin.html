@@ -3,12 +3,19 @@
 <head>
 	<title>Login Page</title>
 </head>
+<style>
+	.c1{
+		background-color: #D1EAF7;
+		color:#009DEB;
+		padding: 10px 10px 10px 10px;
+	}
+</style>
 <body>
 
 	<form method="POST" action="cardlogin.php" onsubmit="return Validation()"> 
-		<fieldset>
-			<legend>Login</legend>
-			<table>
+		<fieldset class="c1">
+			<legend><h3>Card Manager Login</h3></legend>
+			<table align="center" >
 				<tr>
 					<td>Name</td>
 					<td><input type="text" name="name" id="name"></td>

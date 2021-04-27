@@ -7,10 +7,17 @@
         <title>
             Client Account Summary
         </title>
+        <style>
+            .c1{
+                background-color: #D1EAF7;
+                color:#009DEB;
+                padding: 10px 10px 10px 10px;
+            }
+        </style>
     </head>
     <body>
-    <table align="center" width="100%" height="80px" border="1">
-                <tr>
+    <table align="center" width="100%" height="80px" border="1" >
+                <tr class="c1">
                 <td align="center" width="25%"><a href="clienthome.php">Home</a> </td>
                     <td align="center" width="25%"><a href="clientapplyloan.html">Loan</a> </td>
                     <td align="center" width="25%">Business Analytics</td>
@@ -19,7 +26,7 @@
             </table>
             <table border="1" width="100%">
                 <tr>
-                    <td width="20%">
+                    <td width="20%" class="c1">
                     <table height="600px">
                         <tr><td><b>Accounts</b></td></tr>
                         <tr><td><a href="clientaccountsummary.php">Accounts Summary</a> </td></tr>
